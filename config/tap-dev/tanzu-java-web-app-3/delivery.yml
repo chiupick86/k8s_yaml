@@ -10,7 +10,6 @@ metadata:
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     tanzu.app.live.view: "true"
-    tanzu.app.live.view.application.name: tanzu-java-web-app
     app.kubernetes.io/component: run
     carto.run/workload-name: tanzu-java-web-app-3
 spec:
@@ -41,13 +40,13 @@ spec:
         tanzu.app.live.view: "true"
         tanzu.app.live.view.application.actuator.port: "8081"
         tanzu.app.live.view.application.flavours: spring-boot
-        tanzu.app.live.view.application.name: tanzu-java-web-app
+        tanzu.app.live.view.application.name: tanzu-java-web-app-3
     spec:
       containers:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor2.lab.local/my-project/ootb-supply-chain/tanzu-java-web-app-3-tap-dev@sha256:acb20702313bf482e469af6b5ba505dc94ec88c510c76e160241b3f86f55ce74
+        image: harbor2.lab.local/my-project/ootb-supply-chain/tanzu-java-web-app-3-tap-dev@sha256:5bc330d2ca56ba3404e9d835543c2695c1f3161ac88ad7acaad3fc383cb08c4d
         livenessProbe:
           httpGet:
             path: /livez
@@ -62,13 +61,7 @@ spec:
             path: /readyz
             port: 8080
             scheme: HTTP
-        resources:
-          limits:
-            cpu: "1"
-            memory: 1Gi
-          requests:
-            cpu: 500m
-            memory: 40Mi
+        resources: {}
         securityContext:
           runAsUser: 1000
       serviceAccountName: default
