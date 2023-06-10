@@ -1,0 +1,42 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: vuejshrapp-13766
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+    kapp.k14s.io/change-rule: upsert after upserting servicebinding.io/ServiceBindings
+  labels:
+    app.kubernetes.io/part-of: vuejshrapp-13766
+    apps.tanzu.vmware.com/vuejs: "true"
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: vuejshrapp-13766
+spec:
+  template:
+    metadata:
+      annotations:
+        apps.tanzu.vmware.com/debug: "true"
+        apps.tanzu.vmware.com/live-update: "true"
+        conventions.carto.run/applied-conventions: |-
+          appliveview-sample/app-live-view-appflavour-check
+          developer-conventions/add-source-image-label
+          spring-boot-convention/auto-configure-actuators-check
+          spring-boot-convention/app-live-view-appflavour-check
+        developer.apps.tanzu.vmware.com/image-source-digest: harbor.mike.lab/my-project-ootb/ootb-supply-chain:latest@sha256:fdd6190be6980bd12930fd01ae9838d6aa5a3e7911ebfd760e0eb5b4f3cdd9b9
+        developer.conventions/target-containers: workload
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: vuejshrapp-13766
+        apps.tanzu.vmware.com/vuejs: "true"
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: vuejshrapp-13766
+    spec:
+      containers:
+      - image: harbor.mike.lab/my-project-ootb/ootb-supply-chain/vuejshrapp-13766-tap-dev@sha256:3a4b110420a372d2f01c3bba3f6c41497daafda0ec55a30289a5595d4ef24d1d
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
