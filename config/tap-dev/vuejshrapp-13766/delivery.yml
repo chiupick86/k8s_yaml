@@ -17,7 +17,6 @@ spec:
     metadata:
       annotations:
         apps.tanzu.vmware.com/debug: "true"
-        apps.tanzu.vmware.com/live-update: "true"
         conventions.carto.run/applied-conventions: |-
           appliveview-sample/app-live-view-appflavour-check
           developer-conventions/add-source-image-label
