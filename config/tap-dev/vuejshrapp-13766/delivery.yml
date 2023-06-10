@@ -32,7 +32,7 @@ spec:
         carto.run/workload-name: vuejshrapp-13766
     spec:
       containers:
-      - image: harbor.mike.lab/my-project-ootb/ootb-supply-chain/vuejshrapp-13766-tap-dev@sha256:3a4b110420a372d2f01c3bba3f6c41497daafda0ec55a30289a5595d4ef24d1d
+      - image: harbor.mike.lab/my-project-ootb/ootb-supply-chain/vuejshrapp-13766-tap-dev@sha256:5df3dcdb0adcbf03866c3569141b527ca8fa3b730c19644d11106d6fa227e6f3
         name: workload
         resources: {}
         securityContext:
